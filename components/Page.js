@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { PropTypes } from 'prop-types';
 import SidePanel from './SidePanel';
 import TopPanel from './TopPannel';
 
@@ -21,8 +22,8 @@ html{
   --navy: #2b3f54;
   --darkgrey: #2C3438;
   --dark: #171817;
-  --base: #F1F3F6;
-  --offWhite: #fafafa;
+  --base: #009688;
+  --offWhite: #c6c6c6;
   --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
 
   font-family: 'radnika_next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
@@ -60,5 +61,9 @@ const Page = ({ children }) => (
     </div>
   </PageWrapper>
 );
+
+Page.propsType = {
+  children: PropTypes.object,
+};
 
 export default Page;

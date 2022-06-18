@@ -7,10 +7,22 @@ const SidePanelWrapper = styled.section`
   background-color: aliceblue;
   display: flex;
   flex-direction: column;
+  background-color: var(--dark);
+  color: var(--offWhite);
+
   nav {
     display: flex;
     flex-direction: column;
-    margin-left: 1rem;
+    a {
+      padding-left: 1rem;
+      display: flex;
+      height: 3rem;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      :hover {
+        background-color: var(--base);
+      }
+    }
   }
 `;
 
@@ -20,10 +32,10 @@ const SidePanel = () => (
     <div>name doctor picture</div>
     <nav>
       <Link href="/">Dashboard</Link>
-      <Link href="/">Doctor</Link>
-      <Link href="/">Patient</Link>
-      <Link href="/">Appointment</Link>
-      <Link href="/">Raport</Link>
+      <Link href="/doctor">Doctor</Link>
+      <Link href="/patient">Patient</Link>
+      <Link href="/appointment">Appointment</Link>
+      <Link href="/raport">Raport</Link>
     </nav>
   </SidePanelWrapper>
 );
