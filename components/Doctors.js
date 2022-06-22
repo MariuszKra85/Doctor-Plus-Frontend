@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client/';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
+import Doctor from './Doctor';
 
 const ALL_DOCTORS_QUERY = gql`
   query {
@@ -15,18 +16,12 @@ const ALL_DOCTORS_QUERY = gql`
     }
   }
 `;
-
-const Avatar = styled.img`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-`;
-const StyledPerson = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 3rem;
-  border-bottom: 2px solid var(--base);
+const AddButton = styled.button`
+  background-color: var(--base);
+  border: none;
+  border-radius: 0.6em;
+  padding: 1rem;
+  margin: 1rem;
 `;
 
 const Doctors = () => {
@@ -36,16 +31,9 @@ const Doctors = () => {
   return (
     <div>
       <div>Number of doctors: {data ? data.allUsers.length : null}</div>
+      <AddButton>+ Add Doctor</AddButton>
       {data.allUsers.map((user) => (
-        <StyledPerson>
-          {user.photo ? (
-            <Avatar src={user.photo.image.publicUrl} alt="" />
-          ) : (
-            <div>No image!!</div>
-          )}
-          <p>{user.name}</p>
-          <p>{user.surname}</p>
-        </StyledPerson>
+        <Doctor user={user} key={user.surname} />
       ))}
     </div>
   );

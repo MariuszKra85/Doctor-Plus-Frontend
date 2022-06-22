@@ -39,12 +39,13 @@ const Form = styled.form`
   button,
   input[type='submit'] {
     width: auto;
-    background: red;
+    background: var(--base);
+    border-radius: 0.4rem;
     color: white;
     border: 0;
-    font-size: 2rem;
-    font-weight: 600;
-    padding: 0.5rem 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
   }
   fieldset {
     border: 0;
@@ -54,14 +55,14 @@ const Form = styled.form`
       opacity: 0.5;
     }
     &::before {
-      height: 10px;
+      height: 13px;
       content: '';
       display: block;
       background-image: linear-gradient(
         to right,
-        #ff3019 0%,
-        #e2b04a 50%,
-        #ff3019 100%
+        #c6dbff 0%,
+        #0051dd 50%,
+        #e38eed 100%
       );
     }
     &[aria-busy='true']::before {

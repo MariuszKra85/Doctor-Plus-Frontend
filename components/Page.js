@@ -62,7 +62,7 @@ const Page = ({ children }) => (
   </PageWrapper>
 );
 
-Page.propsType = {
+Page.propTypes = {
   children: PropTypes.object,
 };
 
