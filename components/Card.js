@@ -3,8 +3,8 @@ import { PropTypes } from 'prop-types';
 
 const StyledCard = styled.a`
   min-width: 300px;
-  height: 10rem;
-  width: 20vw;
+  height: 8rem;
+  width: 30%;
   background-color: var(--base);
   border-radius: 0.5rem;
   display: flex;

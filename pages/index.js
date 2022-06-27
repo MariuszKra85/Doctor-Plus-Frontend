@@ -20,7 +20,7 @@ const ALL_DOCTORS_LENGTH_QUERY = gql`
 const CardsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 2rem;
 `;
 
