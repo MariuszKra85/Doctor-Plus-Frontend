@@ -1,11 +1,12 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
+import Head from 'next/head';
 import ErrorMessage from './ErrorMessage';
 
 const SINGLE_DOCTOR_QUERY = gql`
-  query {
-    User(where: { id: "62ac51c7fa7fb30600d02d6a" }) {
+  query SINGLE_DOCTOR_QUERY($id: ID!) {
+    User(where: { id: $id }) {
       id
       name
       surname
@@ -27,7 +28,9 @@ const SINGLE_DOCTOR_QUERY = gql`
   }
 `;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin-left: 2rem;
+`;
 const Avatar = styled.img`
   width: 300px;
   height: 300px;
@@ -35,14 +38,23 @@ const Avatar = styled.img`
   margin: 2rem;
 `;
 
-const SingleDoctor = () => {
-  const { data, error, loading } = useQuery(SINGLE_DOCTOR_QUERY);
+const SingleDoctor = ({ id }) => {
+  console.log(id);
+  const { data, error, loading } = useQuery(SINGLE_DOCTOR_QUERY, {
+    variables: {
+      id,
+    },
+  });
 
   if (loading) return <p>loading...</p>;
   if (error) return <ErrorMessage error={error} />;
   const { User } = data;
+  console.log(User);
   return (
-    <div>
+    <Wrapper>
+      <Head>
+        <title>Doctor | {User.name}</title>
+      </Head>
       {User.photo ? (
         <Avatar src={User.photo.image.publicUrlTransformed} alt={User.name} />
       ) : (
@@ -52,9 +64,15 @@ const SingleDoctor = () => {
       <p>Surname: {User.surname}</p>
       <p>Role: {User.role}</p>
       <p>Email {User.email}</p>
-      <p> Outgoing Patients: </p>
-      <p>Outgoing Appointment: {User.appointment.name}</p>
-    </div>
+      <p>
+        {' '}
+        Outgoing Patients:{' '}
+        {User.patient?.map((e) => (
+          <p>{e.name}</p>
+        ))}
+      </p>
+      <p>Outgoing Appointment: {User.appointment?.name}</p>
+    </Wrapper>
   );
 };
 

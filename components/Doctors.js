@@ -6,6 +6,7 @@ import Doctor from './Doctor';
 const ALL_DOCTORS_QUERY = gql`
   query {
     allUsers {
+      id
       name
       surname
       photo {
@@ -33,7 +34,7 @@ const Doctors = () => {
       <div>Number of doctors: {data ? data.allUsers.length : null}</div>
       <AddButton>+ Add Doctor</AddButton>
       {data.allUsers.map((user) => (
-        <Doctor user={user} key={user.surname} />
+        <Doctor user={user} key={user.id} />
       ))}
     </div>
   );
