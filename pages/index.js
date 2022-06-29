@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useQuery } from '@apollo/client/react';
 import Card from '../components/Card';
 
-const ALL_DOCTORS_LENGTH_QUERY = gql`
+const ALL_DATA_LENGTH_QUERY = gql`
   query {
     allUsers {
       name
@@ -25,7 +25,7 @@ const CardsWrapper = styled.div`
 `;
 
 const Index = () => {
-  const { data, error, loading } = useQuery(ALL_DOCTORS_LENGTH_QUERY);
+  const { data, error, loading } = useQuery(ALL_DATA_LENGTH_QUERY);
 
   if (error) return <p>error</p>;
   if (loading) return <p>Loading...</p>;
@@ -37,11 +37,11 @@ const Index = () => {
   return (
     <CardsWrapper>
       <Card name="Doctors" counter={doctorLength} link="/doctor" />
-      <Card name="Patients" counter={patientLength} link="/patient" />
+      <Card name="Patients" counter={patientLength} link="/patients" />
       <Card
         name="Appointments"
         counter={appointmentLength}
-        link="/Appointment"
+        link="/appointment"
       />
     </CardsWrapper>
   );
