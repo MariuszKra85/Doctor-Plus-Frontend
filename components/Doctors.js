@@ -2,10 +2,11 @@ import { useQuery } from '@apollo/client/';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import Doctor from './Doctor';
+import { perPage } from '../config';
 
 const ALL_DOCTORS_QUERY = gql`
-  query {
-    allUsers {
+  query ALL_DOCTORS_QUERY($skip: Int = 0, $first: Int) {
+    allUsers(first: $first, skip: $skip) {
       id
       name
       surname
@@ -25,8 +26,13 @@ const AddButton = styled.button`
   margin: 1rem;
 `;
 
-const Doctors = () => {
-  const { data, error, loading } = useQuery(ALL_DOCTORS_QUERY);
+const Doctors = ({ page }) => {
+  const { data, error, loading } = useQuery(ALL_DOCTORS_QUERY, {
+    variables: {
+      skip: page * perPage - perPage,
+      first: perPage,
+    },
+  });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
   return (

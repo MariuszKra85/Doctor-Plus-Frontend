@@ -32,7 +32,7 @@ const SidePanel = () => (
     <div>name doctor picture</div>
     <nav>
       <Link href="/">Dashboard</Link>
-      <Link href="/doctor">Doctors</Link>
+      <Link href="/doctorsPage/">Doctors</Link>
       <Link href="/patients">Patients</Link>
       <Link href="/appointment">Appointment</Link>
       <Link href="/raport">Raport</Link>

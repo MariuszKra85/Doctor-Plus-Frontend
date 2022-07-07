@@ -36,7 +36,7 @@ const Index = () => {
 
   return (
     <CardsWrapper>
-      <Card name="Doctors" counter={doctorLength} link="/doctor" />
+      <Card name="Doctors" counter={doctorLength} link="/doctors/" />
       <Card name="Patients" counter={patientLength} link="/patients" />
       <Card
         name="Appointments"
